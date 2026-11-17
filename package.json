@@ -1,0 +1,94 @@
+{
+  "name": "solana-steve-capital-agent",
+  "version": "1.0.0",
+  "description": "Autonomous capital agent for Solana built on the Steve Capital SDK and OOBE Protocol. Implements programmable guardrails, multi‑strategy DeFi execution, and sub‑agent delegation.",
+  "main": "dist/index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "test": "jest",
+    "lint": "eslint \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "docker:build": "docker build -t solana-steve-capital-agent .",
+    "docker:run": "docker run -p 3000:3000 solana-steve-capital-agent",
+    "deploy": "npm run build && node dist/scripts/deploy.js",
+    "fund": "npm run build && node dist/scripts/fund.js",
+    "configure": "npm run build && node dist/scripts/configure.js",
+    "agent:engine": "npm run build && node dist/engine.js",
+    "monitor": "npm run build && node dist/monitor.js",
+    "run:strategy:kamino": "npm run build && node dist/strategies/kamino.js",
+    "run:strategy:jupiter": "npm run build && node dist/strategies/jupiter.js",
+    "subagent:create": "npm run build && node dist/scripts/create-subagent.js"
+  },
+  "keywords": [
+    "solana",
+    "steve-capital",
+    "agent",
+    "defi",
+    "trading",
+    "sap",
+    "mcp",
+    "oobe",
+    "jupiter",
+    "kamino",
+    "orca",
+    "raydium",
+    "magicblock"
+  ],
+  "author": "Your Name <you@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/solana-steve-capital-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/solana-steve-capital-agent/issues"
+  },
+  "homepage": "https://github.com/your-org/solana-steve-capital-agent#readme",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@solana/web3.js": "^1.78.0",
+    "@solana/anchor": "^0.28.0",
+    "steve-capital-sdk": "^1.2.0",
+    "oobe-protocol-sdk": "^0.5.0",
+    "@jup-ag/core": "^4.0.0",
+    "kamino-sdk": "^0.3.1",
+    "@orca-so/sdk": "^1.2.0",
+    "@raydium-io/raydium-sdk": "^0.2.0",
+    "adrena-sdk": "^0.1.0",
+    "multihopper-sdk": "^0.1.5",
+    "ace-data-cloud-sdk": "^0.4.0",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "node-cron": "^3.0.2",
+    "commander": "^11.0.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0",
+    "@types/jest": "^29.5.3",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.1.0",
+    "@types/node": "^20.8.0",
+    "rimraf": "^5.0.5"
+  }
+}
